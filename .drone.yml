@@ -1,9 +1,11 @@
-name: drone-test
+---
 kind: pipeline
 type: docker
+name: default
 
 steps:
-- name: test
-  image: alpine
+- name: greeting
+  image: golang:1.12
   commands:
-  - echo "It worked!"
+  - go build
+  - go test
