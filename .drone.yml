@@ -1,9 +1,13 @@
-name: drone-test
 kind: pipeline
-type: docker
+name: default
 
 steps:
-- name: test
-  image: alpine
-  commands:
-  - echo "It worked!"
+- name: docker  
+  image: plugins/docker
+  settings:
+    username: 
+      from_secret: docker_user
+    password:
+      from_secret: docker_password
+    repo: habituszin/test
+    tags: latest
